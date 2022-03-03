@@ -1,7 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\ApplicationController;
+use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,20 +21,14 @@ Auth::routes([
     'reset' => false
 ]);
 
-Route::group(
-    [
-        'prefix' => LaravelLocalization::setLocale(),
-        'middleware' => [
-            'localeSessionRedirect', 
-            'localizationRedirect', 
-            'localeViewPath'
-        ]
-    ], function() {
-        Route::get('/', [ApplicationController::class, 'index'])
-            ->name('index');
-        Route::post('/', [ApplicationController::class, 'store'])
-            ->name('store');
-        Route::get('/applications', [ApplicationController::class, 'applications'])
-            ->middleware('auth')
-            ->name('applications');
+Route::prefix(LaravelLocalization::setLocale())
+    ->middleware(['localeSessionRedirect', 'localizationRedirect', 'localeViewPath'])
+    ->group(function() {
+    Route::get('/', [ApplicationController::class, 'index'])
+        ->name('index');
+    Route::post('/', [ApplicationController::class, 'store'])
+        ->name('store');
+    Route::get('/applications', [ApplicationController::class, 'applications'])
+        ->middleware('auth')
+        ->name('applications');
 });
