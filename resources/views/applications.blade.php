@@ -11,7 +11,7 @@
             <th scope="col">{{ __('arrive') }}</th>
             <th scope="col">{{ __('departure') }}</th>
             <th scope="col">{{ __('location') }}</th>
-            <th scope="col">{{ __('comment') }}</th>
+            <th scope="col" class="w-25">{{ __('comment') }}</th>
             <th scope="col">{{ __('documents') }}</th>
         </tr>
         </thead>
@@ -24,7 +24,9 @@
             <td>{{ \Carbon\Carbon::parse($application->arrive)->format('d M, Y') }}</td>
             <td>{{ \Carbon\Carbon::parse($application->departure)->format('d M, Y') }}</td>
             <td>{{ $application->current_location }}</td>
-            <td>{{ $application->comment }}</td>
+            <td title="{{ $application->comment }}">
+                {{ mb_substr($application->comment, 0, 80) }}@if(strlen($application->comment) > 80)...@endif
+            </td>
             <td>
                 @if($application->passport)
                 <div>
