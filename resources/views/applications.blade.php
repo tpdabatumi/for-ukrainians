@@ -6,13 +6,13 @@
         <thead class="bg-dark text-white">
         <tr>
             <th scope="col">#</th>
-            <th scope="col">Full name</th>
-            <th scope="col">Contact info</th>
-            <th scope="col">Arrive date</th>
-            <th scope="col">Departure date</th>
-            <th scope="col">Current location</th>
-            <th scope="col">Additional info</th>
-            <th scope="col">Uploaded documents</th>
+            <th scope="col">{{ __('name') }}</th>
+            <th scope="col">{{ __('contact') }}</th>
+            <th scope="col">{{ __('arrive') }}</th>
+            <th scope="col">{{ __('departure') }}</th>
+            <th scope="col">{{ __('location') }}</th>
+            <th scope="col">{{ __('comment') }}</th>
+            <th scope="col">{{ __('documents') }}</th>
         </tr>
         </thead>
         <tbody>
@@ -27,11 +27,26 @@
             <td>{{ $application->comment }}</td>
             <td>
                 @if($application->passport)
-                <a href="{{ '/storage/' . $application->passport }}" download>Passport</a>
-                <br>
+                <div>
+                    {{ __('passport') }}:
+                    <a class="text-decoration-none" href="{{ '/storage/' . $application->passport }}" download>
+                        <i class="fas fa-download"></i>
+                    </a>
+                    <a class="text-decoration-none" href="{{ '/storage/' . $application->passport }}" target="_blank">
+                        <i class="fas fa-eye"></i>
+                    </a>
+                </div>
                 @endif
                 @if($application->passport_arrival)
-                <a href="{{ '/storage/' . $application->passport_arrival }}" download>Passport copy of arrival date</a>
+                <div>
+                    {{ __('passport_arrival') }}:
+                    <a class="text-decoration-none" href="{{ '/storage/' . $application->passport_arrival }}" download>
+                        <i class="fas fa-download"></i>
+                    </a>
+                    <a class="text-decoration-none" href="{{ '/storage/' . $application->passport_arrival }}" target="_blank">
+                        <i class="fas fa-eye"></i>
+                    </a>
+                </div>
                 @endif
             </td>
         </tr>
