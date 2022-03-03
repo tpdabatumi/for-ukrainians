@@ -1,0 +1,17 @@
+{
+    "title": "For Ukrainians ✊",
+    "desc": "We stand with Ukraine!",
+    "name": "Full name",
+    "contact": "Contact info",
+    "arrive": "Arrive date",
+    "departure": "Departure date",
+    "location": "Current location",
+    "passport": "Upload passport here",
+    "passport_arrival": "Passport copy of arrival date",
+    "comment": "Additional info",
+    "submit": "Send",
+    "loading": "Sending",
+    "optional": "Optional",
+    "format": "Format: JPG, JPEG, PNG; Max. size: 10MB",
+    "success": "Successfully registered! We will contact you soon."
+}
