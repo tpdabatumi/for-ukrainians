@@ -1,6 +1,6 @@
 <div>
     <div class="row justify-content-between mb-3">
-        <div class="col-6 col-md-3 col-lg-2 d-flex align-items-center">
+        <div class="col-6 col-md-3 col-lg-2 d-flex align-items-center my-1">
             <select class="form-select" id="paginate" wire:model="paginate" style="width: 80px;">
                 <option value="10">10</option>
                 <option value="25">25</option>
@@ -12,15 +12,27 @@
                 <small>{{ __('per_page') }}</small>
             </label>
         </div>
-        <div class="col-6 col-md-4 col-lg-3">
+        <div class="col-6 col-md-4 col-lg-3 my-1">
             <input class="form-control" type="text" wire:model="search" placeholder="{{ __('search') }}" />
         </div>
+        @if(count($selectedRecords))
+        <div class="col-12 my-1">
+            <button class="btn btn-sm btn-primary" wire:click="export">
+                Export {{ count($selectedRecords) }}
+                @if(count($selectedRecords) > 1)
+                records
+                @else
+                record
+                @endif
+            </button>
+        </div>
+        @endif
     </div>
     <div class="table-responsive">
         <table class="table table-striped">
             <thead class="bg-dark text-white">
             <tr>
-                <th scope="col">#</th>
+                <th scope="col"></th>
                 <th scope="col">{{ __('name') }}</th>
                 <th scope="col">{{ __('contact') }}</th>
                 <th scope="col">{{ __('arrive') }}</th>
@@ -31,9 +43,13 @@
             </tr>
             </thead>
             <tbody>
-            @foreach($applications as $i => $application)
+            @foreach($applications as $application)
             <tr>
-                <th scope="row">{{ $i + 1 }}</th>
+                <th scope="row">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="{{ $application->id }}" wire:model="selectedRecords">
+                    </div>
+                </th>
                 <td>{{ $application->full_name }}</td>
                 <td>{{ $application->contact_info }}</td>
                 <td>{{ \Carbon\Carbon::parse($application->arrive)->format('d M, Y') }}</td>
@@ -72,10 +88,10 @@
         </table>
     </div>
     <div class="d-flex align-items-center flex-wrap justify-content-between">
-        <small class="text-muted">
+        <small class="text-muted my-1">
             {{ __('total') }} <span class="fw-bold">{{ $applications->total() }}</span>
         </small>
-        <div>
+        <div class="my-1">
             {!! $applications->links() !!}
         </div>
     </div>
