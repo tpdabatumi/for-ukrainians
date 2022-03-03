@@ -57,9 +57,6 @@ class ApplicationController extends Controller
     }
 
     public function applications() {
-        return view('applications', [
-            'applications' => Application::orderBy('id', 'desc')
-                ->paginate(10)
-        ]);
+        return view('applications');
     }
 }

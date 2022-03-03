@@ -14,5 +14,8 @@
     "optional": "Optional",
     "format": "Format: JPG, JPEG, PNG; Max. size: 10MB",
     "success": "Successfully registered! We will contact you soon.",
-    "documents": "Uploaded documents"
+    "documents": "Uploaded documents",
+    "per_page": "Per page",
+    "search": "Search by name...",
+    "total": "Total records:"
 }
