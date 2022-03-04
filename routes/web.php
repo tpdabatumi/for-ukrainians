@@ -26,8 +26,6 @@ Route::prefix(LaravelLocalization::setLocale())
     ->group(function() {
     Route::get('/', [ApplicationController::class, 'index'])
         ->name('index');
-    Route::post('/', [ApplicationController::class, 'store'])
-        ->name('store');
     Route::get('/applications', [ApplicationController::class, 'applications'])
         ->middleware('auth')
         ->name('applications');

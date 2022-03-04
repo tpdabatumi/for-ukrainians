@@ -18,11 +18,11 @@
         @if(count($selectedRecords))
         <div class="col-12 my-1">
             <button class="btn btn-sm btn-primary" wire:click="export">
-                Export {{ count($selectedRecords) }}
+                {{ __('export') }} {{ count($selectedRecords) }}
                 @if(count($selectedRecords) > 1)
-                records
+                {{ __('records') }}
                 @else
-                record
+                {{ __('record') }}
                 @endif
             </button>
         </div>
@@ -61,24 +61,28 @@
                 <td>
                     @if($application->passport)
                     <div>
-                        {{ __('passport') }}:
-                        <a class="text-decoration-none" href="{{ '/storage/' . $application->passport }}" download>
-                            <i class="fas fa-download"></i>
-                        </a>
-                        <a class="text-decoration-none" href="{{ '/storage/' . $application->passport }}" target="_blank">
-                            <i class="fas fa-eye"></i>
-                        </a>
+                        {{ __('doc_passport') }}:
+                        <div>
+                            <a class="text-decoration-none" href="{{ '/storage/' . $application->passport }}" download>
+                                <i class="fas fa-download"></i>
+                            </a>
+                            <a class="text-decoration-none" href="{{ '/storage/' . $application->passport }}" target="_blank">
+                                <i class="fas fa-eye"></i>
+                            </a>
+                        </div>
                     </div>
                     @endif
                     @if($application->passport_arrival)
                     <div>
-                        {{ __('passport_arrival') }}:
-                        <a class="text-decoration-none" href="{{ '/storage/' . $application->passport_arrival }}" download>
-                            <i class="fas fa-download"></i>
-                        </a>
-                        <a class="text-decoration-none" href="{{ '/storage/' . $application->passport_arrival }}" target="_blank">
-                            <i class="fas fa-eye"></i>
-                        </a>
+                        {{ __('doc_arrival') }}:
+                        <div>
+                            <a class="text-decoration-none" href="{{ '/storage/' . $application->passport_arrival }}" download>
+                                <i class="fas fa-download"></i>
+                            </a>
+                            <a class="text-decoration-none" href="{{ '/storage/' . $application->passport_arrival }}" target="_blank">
+                                <i class="fas fa-eye"></i>
+                            </a>
+                        </div>
                     </div>
                     @endif
                 </td>
