@@ -60,7 +60,7 @@
                 </td>
                 <td>
                     @if($application->passport)
-                    <div>
+                    <div class="d-flex gap-1">
                         {{ __('doc_passport') }}:
                         <div>
                             <a class="text-decoration-none" href="{{ '/storage/' . $application->passport }}" download>
@@ -73,7 +73,7 @@
                     </div>
                     @endif
                     @if($application->passport_arrival)
-                    <div>
+                    <div class="d-flex gap-1">
                         {{ __('doc_arrival') }}:
                         <div>
                             <a class="text-decoration-none" href="{{ '/storage/' . $application->passport_arrival }}" download>
