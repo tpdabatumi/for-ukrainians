@@ -10,6 +10,7 @@ use Maatwebsite\Excel\Concerns\ShouldAutoSize;
 use Maatwebsite\Excel\Concerns\WithStyles;
 use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
 use App\Models\Application;
+use Carbon\Carbon;
 
 class ApplicationExport implements FromQuery, WithMapping, WithHeadings, ShouldAutoSize, WithStyles
 {
@@ -29,7 +30,7 @@ class ApplicationExport implements FromQuery, WithMapping, WithHeadings, ShouldA
                     'bold' => true
                 ]
             ],
-            'G' => [
+            'H' => [
                 'alignment' => [
                     'wrapText' => true
                 ]
@@ -45,6 +46,7 @@ class ApplicationExport implements FromQuery, WithMapping, WithHeadings, ShouldA
             'Departure date',
             'Current location',
             'Additional info',
+            'Registration date',
             'Uploaded documents'
         ];
     }
@@ -57,6 +59,7 @@ class ApplicationExport implements FromQuery, WithMapping, WithHeadings, ShouldA
             $application->departure,
             $application->current_location,
             $application->comment,
+            Carbon::parse($application->created_at)->format('H:i (d M, Y)'),
             config('app.url') . '/storage/' . $application->passport . "\n" . config('app.url') . '/storage/' . $application->passport_arrival
         ];
     }
