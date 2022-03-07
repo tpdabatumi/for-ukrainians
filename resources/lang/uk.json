@@ -741,5 +741,6 @@
     "record": "запис",
     "records": "записи",
     "doc_passport": "Паспорт",
-    "doc_arrival": "Прибуття"
+    "doc_arrival": "Прибуття",
+    "registration_date": "Дата Реєстрації"
 }

@@ -23,5 +23,6 @@
     "record": "record",
     "records": "records",
     "doc_passport": "Passport",
-    "doc_arrival": "Arrival"
+    "doc_arrival": "Arrival",
+    "registration_date": "Registration date"
 }

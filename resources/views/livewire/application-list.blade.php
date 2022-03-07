@@ -39,6 +39,7 @@
                 <th scope="col">{{ __('departure') }}</th>
                 <th scope="col">{{ __('location') }}</th>
                 <th scope="col" class="w-25">{{ __('comment') }}</th>
+                <th scope="col">{{ __('registration_date') }}</th>
                 <th scope="col">{{ __('documents') }}</th>
             </tr>
             </thead>
@@ -57,6 +58,9 @@
                 <td>{{ $application->current_location }}</td>
                 <td title="{{ $application->comment }}">
                     {{ mb_substr($application->comment, 0, 80) }}@if(strlen($application->comment) > 80)...@endif
+                </td>
+                <td>
+                    {{ \Carbon\Carbon::parse($application->created_at)->format('H:i (d M, Y)') }}
                 </td>
                 <td>
                     @if($application->passport)
