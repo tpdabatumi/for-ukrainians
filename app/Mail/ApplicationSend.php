@@ -35,12 +35,19 @@ class ApplicationSend extends Mailable
     public function __construct($name, $contact, $arrive, $departure, $location, $comment, $passport, $passport_arrival)
     {
         $this->name = $name;
+        
         $this->contact = $contact;
+        
         $this->arrive = $arrive;
+        
         $this->departure = $departure;
+        
         $this->location = $location;
+        
         $this->comment = $comment;
+        
         $this->passport = $passport;
+        
         $this->passport_arrival = $passport_arrival;
     }
 
@@ -51,8 +58,7 @@ class ApplicationSend extends Mailable
      */
     public function build()
     {
-        return $this->from(config('mail.from.address'), $this->name)
-            ->subject('New Ukrainian Registration')
-            ->view('mail.application');
+        return $this->markdown('mail.application')
+            ->subject('უკრაინელის რეგისტრაცია');
     }
 }

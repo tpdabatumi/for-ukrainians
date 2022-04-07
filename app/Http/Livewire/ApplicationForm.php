@@ -67,7 +67,7 @@ class ApplicationForm extends Component
             'comment' => $this->comment
         ]);
 
-        Mail::to(config('mail.from.address'))
+        Mail::to('ticbatumi@gmail.com')
             ->send(new ApplicationSend($this->full_name, $this->contact_info, $this->arrive, $this->departure, $this->current_location, $this->comment, $passport, $passport_arrival));
 
         session()->flash('message', __('success'));
