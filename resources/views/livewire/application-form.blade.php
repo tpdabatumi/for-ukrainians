@@ -31,7 +31,7 @@
         </div>
         <div class="col-md-6 my-2">
             <label class="my-1" for="arrive">{{ __('arrive') }} <small class="text-danger">*</small></label>
-            <input class="form-control @error('arrive') is-invalid @enderror" type="date" wire:model="arrive" name="arrive" id="arrive" placeholder="2022-02-15" value="{{ old('arrive') }}" />
+            <input class="form-control date-form @error('arrive') is-invalid @enderror" type="text" wire:model="arrive" name="arrive" id="arrive" placeholder="2022-02-15" value="{{ old('arrive') }}" />
 
             @error('arrive')
                 <span class="invalid-feedback" role="alert">
@@ -41,7 +41,7 @@
         </div>
         <div class="col-md-6 my-2">
             <label class="my-1" for="departure">{{ __('departure') }} <small class="text-danger">*</small></label>
-            <input class="form-control @error('departure') is-invalid @enderror" type="date" wire:model="departure" name="departure" id="departure" placeholder="2022-02-28" value="{{ old('departure') }}" />
+            <input class="form-control date-form @error('departure') is-invalid @enderror" type="text" wire:model="departure" name="departure" id="departure" placeholder="2022-02-28" value="{{ old('departure') }}" />
 
             @error('departure')
                 <span class="invalid-feedback" role="alert">
