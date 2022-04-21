@@ -2,7 +2,10 @@
 
 namespace App\Exceptions;
 
+use App\Notifications\ErrorNotification;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Support\Facades\Notification;
+use Throwable;
 
 class Handler extends ExceptionHandler
 {
@@ -32,6 +35,9 @@ class Handler extends ExceptionHandler
      */
     public function register()
     {
-        //
+        $this->reportable(function (Throwable $e) {
+            Notification::route('telegram', config('services.telegram_id'))
+                ->notify(new ErrorNotification($e->getMessage()));
+        });
     }
 }
