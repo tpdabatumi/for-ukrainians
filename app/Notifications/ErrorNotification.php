@@ -24,7 +24,7 @@ class ErrorNotification extends Notification
         return TelegramMessage::create()
             ->to(config('services.my_telegram_id'))
             ->content(
-                'საიტზე დაფიქსირდა შეცდომა:' . "\n\n" . 'აღწერა: ' . $this->error . "\n" . 'ბმული: ' . request()->url() . "\n" . 'დრო: ' . now() . "\n" . 'IP მისამართი: ' . request()->ip() . "\n" . 'მოწყობილობა: ' . request()->header('User-Agent') . "\n" . 'მომხმარებელი: ' . auth()->user()->name
+                'საიტზე დაფიქსირდა შეცდომა:' . "\n\n" . 'აღწერა: ' . $this->error . "\n" . 'ბმული: ' . request()->url() . "\n" . 'დრო: ' . now() . "\n" . 'IP მისამართი: ' . request()->ip() . "\n" . 'მოწყობილობა: ' . request()->header('User-Agent')
             );
     }
 }
